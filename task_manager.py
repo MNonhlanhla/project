@@ -1,3 +1,4 @@
+from datetime import date
 import dateutil.parser
 import sys
 
@@ -28,8 +29,19 @@ def add_task():
     task_username = input("Enter your username ")
     title = input("Enter the title of the task ")
     task_description = input("Enter the description of the task ")
-    task_due_date = input("Enter the task due date (dd MMM yyyy, ie 01 Jan 2000) ")
+    # Prompt user for date input until they enter a valid date.
+    while True:
+        task_due_date = input("Enter the task due date (dd MMM yyyy, ie 01 Jan 2000) ")
+        try:
+            result_date = dateutil.parser.parse(input_date, dayfirst=True).strftime('%d-%b-%Y').upper()
+            print("Valid date input!!")
+            continue
+        except dateutil.parser._parser.ParserError as ex:
+            print("Invalid Date entered.")
+    # Get current date in default format.
     current_date = date.today()
+    # Change current_date to desired date format.
+    current_date = dateutil.parser.parse(str(current_date), dayfirst=True).strftime('%d-%b-%Y').upper()
     with open('tasks.txt', 'a') as tasks:
         tasks.write(f'''{task_username}, {title}, {task_description}, {task_due_date}, {current_date}, No\n''')
     print("Task added successfully")
