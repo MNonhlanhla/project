@@ -5,13 +5,12 @@ import sys
 username = input("Enter your username: ")
 password = input("Enter your password: ")
 
-# Initialize the user_logged_in flag which will be changed when the credentials are valid
+# Initialize the user_logged_in flag which will be changed when the credentials are valid.
 user_logged_in = False
+
 
 ''' This function registers a new user and saves the username and password
  in user.txt file after the credentials have been confirmed. '''
-
-
 def user_reg():
     new_username = input("Enter your new username: ")
     new_password = input("Enter your new password: ")
@@ -25,8 +24,6 @@ def user_reg():
 
 '''This function prompts the user for their username and the task details.
 Opens a tasks.txt file and adds the task in the file.'''
-
-
 def add_task():
     task_username = input("Enter your username ")
     title = input("Enter the title of the task ")
@@ -57,8 +54,6 @@ def view_all():
 
 '''This function opens tasks.txt file, reads data to check for the tasks that only belongs to the logged in user
 Prints all the tasks and allow the user to ether edit r mark the task as done.'''
-
-
 def view_mine():
     with open('tasks.txt', 'r') as tasks:
         task_list = tasks.readlines()
@@ -180,3 +175,4 @@ if user_logged_in:
             sys.exit()
         else:
             print("You have entered an invalid input. Please try again")
+            
