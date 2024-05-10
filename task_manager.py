@@ -1,4 +1,4 @@
-from datetime import date
+import dateutil.parser
 import sys
 
 # Prompt the user for the login credentials.
@@ -36,8 +36,6 @@ def add_task():
 
 
 '''This function opens tasks.txt file for reading and prints out all the tasks from the file.'''
-
-
 def view_all():
     with open('tasks.txt', 'r') as tasks:
         task_list = tasks.readlines()
